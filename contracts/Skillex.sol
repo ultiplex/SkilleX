@@ -59,6 +59,18 @@ contract Skills is ERC721Token("Skillex", "SKLX") {
 
 contract MarketeX is Skills {
 
+    event OfferCreated(
+        uint offerId,
+        uint skillId,
+        uint price,
+        address teacherErc721,
+        uint teacherTokenId
+    );
+
+    event OfferDeleted(
+        uint offerId
+    );
+
     struct Offer {
         bool valid;
         ERC721 teacherErc721;
@@ -75,7 +87,8 @@ contract MarketeX is Skills {
         ERC721 erc721;
         uint tokenId;
         (erc721, tokenId) = composableRegistry.parentOf(this, skillId);
-        offers.push(Offer(true, erc721, tokenId, skillId, price));
+        uint offerIdPlusOne = offers.push(Offer(true, erc721, tokenId, skillId, price));
+        emit OfferCreated(offerIdPlusOne - 1, skillId, price, erc721, tokenId);
     }
 
     function cancel(uint offerId) public {
@@ -83,6 +96,7 @@ contract MarketeX is Skills {
         require(offer.valid);
         require(composableRegistry.ownerOf(offer.teacherErc721, offer.teacherId) == msg.sender);
         delete offers[offerId];
+        emit OfferDeleted(offerId);
     }
 
     function learn(uint offerId, ERC721 toErc721, uint toTokenId) public payable {
