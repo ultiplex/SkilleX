@@ -1,12 +1,12 @@
-const WithdraweX = artifacts.require("WithdraweX.sol");
+const SkilleX = artifacts.require("SkilleX.sol");
 const KittyNFT = artifacts.require("KittyNFT.sol");
 const ERC721ComposableRegistry = artifacts.require("ERC721ComposableRegistry.sol");
 
-contract('Skillex', (accounts) => {
+contract('SkilleX', (accounts) => {
 
     beforeEach(async () => {
         this.composableRegistry = await ERC721ComposableRegistry.new();
-        this.skills = await WithdraweX.new(this.composableRegistry.address);
+        this.skills = await SkilleX.new(this.composableRegistry.address);
         this.kitties = await KittyNFT.new();
         await this.kitties.create();
     });

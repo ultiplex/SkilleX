@@ -4,14 +4,14 @@ import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 import "./ERC721ComposableRegistry.sol";
 
-contract Skills is ERC721Token("Skillex", "SKLX") {
+contract TokeneX is ERC721Token("SkilleX", "SKLX") {
 
     ERC721ComposableRegistry internal composableRegistry;
 
     mapping(string => bool) private ipfsHashExists;
-    mapping(string => string) private nameToIpfsHash;
-    mapping(uint => string) public tokenIdToName;
-    mapping(uint => uint) public generation;
+    mapping(uint => string) private tokenIdToName;
+    mapping(uint => string) private tokenIdToIpfsHash;
+    mapping(uint => uint) private tokenIdToGeneration;
 
     constructor(ERC721ComposableRegistry cr) public {
         composableRegistry = cr;
@@ -22,8 +22,8 @@ contract Skills is ERC721Token("Skillex", "SKLX") {
         uint tokenId = allTokens.length + 1;
         _mint(composableRegistry, tokenId);
         ipfsHashExists[ipfsHash] = true;
-        nameToIpfsHash[name] = ipfsHash;
         tokenIdToName[tokenId] = name;
+        tokenIdToIpfsHash[tokenId] = ipfsHash;
         composableRegistry.onERC721Received(this, tokenId, addressAndUintToBytes(toErc721, toTokenId));
     }
 
@@ -31,7 +31,8 @@ contract Skills is ERC721Token("Skillex", "SKLX") {
         uint tokenId = allTokens.length + 1;
         _mint(composableRegistry, tokenId);
         tokenIdToName[tokenId] = tokenIdToName[originalId];
-        generation[tokenId] = generation[originalId] + 1;
+        tokenIdToIpfsHash[tokenId] = tokenIdToIpfsHash[originalId];
+        tokenIdToGeneration[tokenId] = tokenIdToGeneration[originalId] + 1;
         composableRegistry.onERC721Received(this, tokenId, addressAndUintToBytes(toErc721, toTokenId));
     }
 
@@ -46,9 +47,14 @@ contract Skills is ERC721Token("Skillex", "SKLX") {
         return ret;
     }
 
+    function getSkillName(uint tokenId) public view returns (string) {
+        require(exists(tokenId));
+        return tokenIdToName[tokenId];
+    }
+
     function getIpfsHash(uint tokenId) public view returns (string) {
         require(exists(tokenId));
-        return nameToIpfsHash[tokenIdToName[tokenId]];
+        return tokenIdToIpfsHash[tokenId];
     }
 
     modifier canTransfer(uint256 _tokenId) {
@@ -57,7 +63,7 @@ contract Skills is ERC721Token("Skillex", "SKLX") {
     }
 }
 
-contract MarketeX is Skills {
+contract MarketeX is TokeneX {
 
     event OfferCreated(
         uint offerId,
@@ -105,15 +111,15 @@ contract MarketeX is Skills {
         Offer memory offer = offers[offerId];
         require(offer.valid);
         require(msg.value >= offer.price);
-        require(!hasSkill(toErc721, toTokenId, offer.skillId));
+        require(!hasSkill(toErc721, toTokenId, getIpfsHash(offer.skillId)));
         copySkill(offers[offerId].skillId, toErc721, toTokenId);
         address teacherOwner = composableRegistry.ownerOf(offer.teacherErc721, offer.teacherId);
         teacherOwner.transfer(offer.price * 94 / 100);
         msg.sender.transfer(msg.value - offer.price);
     }
 
-    function hasSkill(ERC721 erc721, uint tokenId, uint skillId) public view returns (bool) {
-        bytes32 hash = keccak256(getIpfsHash(skillId));
+    function hasSkill(ERC721 erc721, uint tokenId, string ipfsHash) public view returns (bool) {
+        bytes32 hash = keccak256(ipfsHash);
         ERC721[] memory erc721s;
         uint[] memory tokenIds;
         (erc721s, tokenIds) = composableRegistry.children(erc721, tokenId);
@@ -126,12 +132,15 @@ contract MarketeX is Skills {
     }
 }
 
-contract WithdraweX is MarketeX, Ownable {
-
-    constructor(ERC721ComposableRegistry cr) Skills(cr) public {
-    }
+contract WithdraweX is Ownable {
 
     function withdrawEther() public onlyOwner {
         msg.sender.transfer(address(this).balance);
+    }
+}
+
+contract SkilleX is MarketeX, WithdraweX {
+
+    constructor(ERC721ComposableRegistry cr) TokeneX(cr) public {
     }
 }

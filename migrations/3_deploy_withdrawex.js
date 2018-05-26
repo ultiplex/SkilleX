@@ -1,6 +1,6 @@
-var WithdraweX = artifacts.require("./WithdraweX.sol");
+var SkilleX = artifacts.require("./SkilleX.sol");
 var ERC721ComposableRegistry = artifacts.require("./ERC721ComposableRegistry.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(WithdraweX, ERC721ComposableRegistry.address);
+  deployer.deploy(SkilleX, ERC721ComposableRegistry.address);
 };
