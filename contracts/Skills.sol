@@ -35,7 +35,7 @@ contract Skills is ERC721Token("Skillex", "SKLX") {
         composableRegistry.onERC721Received(this, tokenId, addressAndUintToBytes(toErc721, toTokenId));
     }
 
-    function addressAndUintToBytes(address erc721, uint tokenId) constant returns (bytes) {
+    function addressAndUintToBytes(address erc721, uint tokenId) private pure returns (bytes) {
         bytes32 bytesErc721 = bytes32(erc721);
         bytes32 bytesTokenId = bytes32(tokenId);
         bytes memory ret = new bytes(64);
@@ -96,7 +96,16 @@ contract MarketeX is Skills {
         msg.sender.transfer(msg.value - offer.price);
     }
 
-    function hasSkill(ERC721 erc721, uint tokenId, uint skillId) private returns (bool) {
+    function hasSkill(ERC721 erc721, uint tokenId, uint skillId) public view returns (bool) {
+        bytes32 hash = keccak256(getIpfsHash(skillId));
+        ERC721[] memory erc721s;
+        uint[] memory tokenIds;
+        (erc721s, tokenIds) = composableRegistry.children(erc721, tokenId);
+        for (uint i = 0; i < erc721s.length; i++) {
+            if (erc721s[i] == this && keccak256(getIpfsHash(tokenIds[i])) == hash) {
+                return true;
+            }
+        }
         return false;
     }
 }
