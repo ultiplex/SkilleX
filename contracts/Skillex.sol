@@ -64,7 +64,9 @@ contract MarketeX is Skills {
         uint skillId,
         uint price,
         address teacherErc721,
-        uint teacherTokenId
+        uint teacherTokenId,
+        string skillName,
+        uint generation
     );
 
     event OfferDeleted(
@@ -88,7 +90,7 @@ contract MarketeX is Skills {
         uint tokenId;
         (erc721, tokenId) = composableRegistry.parentOf(this, skillId);
         uint offerIdPlusOne = offers.push(Offer(true, erc721, tokenId, skillId, price));
-        emit OfferCreated(offerIdPlusOne - 1, skillId, price, erc721, tokenId);
+        emit OfferCreated(offerIdPlusOne - 1, skillId, price, erc721, tokenId, tokenIdToName[skillId], generation[skillId]);
     }
 
     function cancel(uint offerId) public {
