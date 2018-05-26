@@ -2,10 +2,6 @@
   "name": "my-app",
   "version": "0.1.0",
   "contracts": {
-    "WithdraweX": "WithdraweX"
-  },
-  "stdlib": {
-    "name": "openzeppelin-zos",
-    "version": "1.9.1"
+    "SkilleX": "SkilleX"
   }
 }

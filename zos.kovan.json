@@ -1,0 +1,27 @@
+{
+  "contracts": {
+    "SkilleX": {
+      "address": "0x436d96a711cfeb1ff9fa99fb1fc1c24d2a381df9",
+      "bytecodeHash": "44ec39f7661040403ac28041f11f261ac5a1ed42e8db590414afcfa309bc725b"
+    }
+  },
+  "proxies": {
+    "SkilleX": [
+      {
+        "address": "0x1113a62e4001ebdbd8fc265643516a2adf92d933",
+        "version": "0.1.0",
+        "implementation": "0x436d96a711cfeb1ff9fa99fb1fc1c24d2a381df9"
+      }
+    ]
+  },
+  "app": {
+    "address": "0x11138e5ae41cc3130826dde2508cba5a916c16d1"
+  },
+  "version": "0.1.0",
+  "package": {
+    "address": "0x20c7f11d60d9a07dc01516373cbf90147830d88f"
+  },
+  "provider": {
+    "address": "0x609fd93032ad638a50fe3d509cb302b569f7f051"
+  }
+}

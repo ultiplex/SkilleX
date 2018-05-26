@@ -14,14 +14,14 @@ module.exports = {
 				var kovanWallet = Wallet.fromPrivateKey(kovanPrivateKey);
 		    	return new WalletProvider(kovanWallet, "https://kovan.infura.io/");
 		    },
-		    gas: 4600000,
+		    gas: 6600000,
 	      	gasPrice: web3.toWei("20", "gwei"),
 		    network_id: '42',
 		},
 		local: {
           host: 'localhost',
           port: 8545,
-          gas: 5000000,
+          gas: 30000000,
           network_id: '*'
         }
 	}
