@@ -31,10 +31,10 @@ contract('SkilleX', (accounts) => {
 		await this.skills.createSkill("Name", "ipfs hash", this.kitties.address, 1);
         await this.kitties.create();
         await this.skills.offerTeach(1, 100);
-        const kitty2SkillState = await this.skills.hasSkill(this.kitties.address, 2, 1)
+        const kitty2SkillState = await this.skills.hasSkill(this.kitties.address, 2, "ipfs hash")
         assert.equal(kitty2SkillState, false)
         await this.skills.learn(0, this.kitties.address, 2, {value: '100'})
-        const kitty2NewSkillState = await this.skills.hasSkill(this.kitties.address, 2, 1)
+        const kitty2NewSkillState = await this.skills.hasSkill(this.kitties.address, 2, "ipfs hash")
         assert.equal(kitty2NewSkillState, true)
 	});
 });

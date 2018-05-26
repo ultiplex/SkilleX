@@ -9,9 +9,9 @@ contract TokeneX is ERC721Token("SkilleX", "SKLX") {
     ERC721ComposableRegistry internal composableRegistry;
 
     mapping(string => bool) private ipfsHashExists;
-    mapping(uint => string) private tokenIdToName;
-    mapping(uint => string) private tokenIdToIpfsHash;
-    mapping(uint => uint) private tokenIdToGeneration;
+    mapping(uint => string) internal tokenIdToName;
+    mapping(uint => string) internal tokenIdToIpfsHash;
+    mapping(uint => uint) internal tokenIdToGeneration;
 
     constructor(ERC721ComposableRegistry cr) public {
         composableRegistry = cr;
@@ -96,7 +96,7 @@ contract MarketeX is TokeneX {
         uint tokenId;
         (erc721, tokenId) = composableRegistry.parentOf(this, skillId);
         uint offerIdPlusOne = offers.push(Offer(true, erc721, tokenId, skillId, price));
-        emit OfferCreated(offerIdPlusOne - 1, skillId, price, erc721, tokenId, tokenIdToName[skillId], generation[skillId]);
+        emit OfferCreated(offerIdPlusOne - 1, skillId, price, erc721, tokenId, tokenIdToName[skillId], tokenIdToGeneration[skillId]);
     }
 
     function cancel(uint offerId) public {
