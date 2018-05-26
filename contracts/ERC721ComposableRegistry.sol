@@ -119,6 +119,12 @@ contract ERC721ComposableRegistry {
         return erc721.ownerOf(tokenId);
     }
 
+    function parentOf(ERC721 erc721, uint tokenId) public view returns (ERC721, uint) {
+        TokenIdentifier memory parent = childToParent[erc721][tokenId];
+        require(parent.erc721 != ERC721(0));
+        return (parent.erc721, parent.tokenId);
+    }
+
     function children(ERC721 erc721, uint tokenId) public view returns (ERC721[], uint[]) {
         TokenIdentifier[] memory c = parentToChildren[erc721][tokenId];
         ERC721[] memory erc721s = new ERC721[](c.length);
