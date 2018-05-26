@@ -16,6 +16,16 @@ contract('Skills', (accounts) => {
 		const ownerOfSkill = await this.composableRegistry.ownerOf(this.skills.address, 1);
 		assert.equal(ownerOfSkill, accounts[0]);
 	});
+
+	it("should not allow skill transferring", async () => {
+		await this.skills.createSkill("Name", "ipfs hash", formatToByteArray(this.kitties.address, 1));
+        try {
+            await this.composableRegistry.transferToAddress(accounts[0], this.skills.address, 1);
+            assert.fail();
+        }catch(ex) {
+            if(ex.name == 'AssertionError') throw ex;
+        }
+	});
 });
 
 
