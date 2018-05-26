@@ -6,7 +6,8 @@ contract('SkilleX', (accounts) => {
 
     beforeEach(async () => {
         this.composableRegistry = await ERC721ComposableRegistry.new();
-        this.skills = await SkilleX.new(this.composableRegistry.address);
+        this.skills = await SkilleX.new();
+        this.skills.initialize(this.composableRegistry.address, accounts[0]);
         this.kitties = await KittyNFT.new();
         await this.kitties.create();
     });

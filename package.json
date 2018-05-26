@@ -12,9 +12,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "zeppelin-solidity": "^1.9.0",
     "dotenv": "^5.0.1",
     "ethereumjs-wallet": "^0.6.0",
-    "truffle-wallet-provider": "0.0.5"
+    "truffle-wallet-provider": "0.0.5",
+    "zos-lib": "^1.0.0"
+  },
+  "dependencies": {
+    "openzeppelin-zos": "^1.9.1"
   }
 }

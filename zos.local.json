@@ -1,0 +1,19 @@
+{
+  "contracts": {
+    "WithdraweX": {
+      "address": "0x1f9fd3b6d2745d6dd5a060affcfcbe0655546196",
+      "bytecodeHash": "fa3aac0bf82a0663fed0e663594174a887a5062263d73a12e6be8dda3c591908"
+    }
+  },
+  "proxies": {},
+  "app": {
+    "address": "0x229e5ab8771593a2c16c236ea8196c76064b1c5b"
+  },
+  "version": "0.1.0",
+  "package": {
+    "address": "0x707e6c238fb35b36049b8476572f6e8da40c03f2"
+  },
+  "provider": {
+    "address": "0xf829aa8e1d4b7a4aa4a1144eacfe6bfb759efce2"
+  }
+}

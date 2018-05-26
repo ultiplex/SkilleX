@@ -1,10 +1,10 @@
 pragma solidity ^0.4.23;
 
-import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 import "./ERC721ComposableRegistry.sol";
+import "openzeppelin-zos/contracts/token/ERC721/ERC721Token.sol";
+import "openzeppelin-zos/contracts/ownership/Ownable.sol";
 
-contract TokeneX is ERC721Token("SkilleX", "SKLX") {
+contract TokeneX is ERC721Token {
 
     ERC721ComposableRegistry public composableRegistry;
 
@@ -14,8 +14,9 @@ contract TokeneX is ERC721Token("SkilleX", "SKLX") {
     mapping(uint => uint) internal tokenIdToGeneration;
     mapping(string => uint[]) internal ipfsHashToTokenIds;
 
-    constructor(ERC721ComposableRegistry cr) public {
-        composableRegistry = cr;
+    function initialize(address cr) isInitializer("TokeneX", "0") public {
+        ERC721Token.initialize("SkilleX", "SKLX");
+        composableRegistry = ERC721ComposableRegistry(cr);
     }
 
     function createSkill(string name, string ipfsHash, address toErc721, uint toTokenId) public {
@@ -97,6 +98,10 @@ contract MarketeX is TokeneX {
 
     Offer[] offers;
 
+    function initialize(address cr) isInitializer("MarketeX", "0") public {
+        TokeneX.initialize(cr);
+    }
+
     function offerTeach(uint skillId, uint price) public {
         address owner = composableRegistry.ownerOf(this, skillId);
         require(owner == msg.sender);
@@ -142,6 +147,10 @@ contract MarketeX is TokeneX {
 
 contract WithdraweX is Ownable {
 
+    function initialize(address owner) isInitializer("WithdraweX", "0") public {
+        Ownable.initialize(owner);
+    }
+
     function withdrawEther() public onlyOwner {
         msg.sender.transfer(address(this).balance);
     }
@@ -149,6 +158,8 @@ contract WithdraweX is Ownable {
 
 contract SkilleX is MarketeX, WithdraweX {
 
-    constructor(ERC721ComposableRegistry cr) TokeneX(cr) public {
+    function initialize(address cr, address owner) isInitializer("SkilleX", "0") public {
+        MarketeX.initialize(cr);
+        WithdraweX.initialize(owner);
     }
 }
