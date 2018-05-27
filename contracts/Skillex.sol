@@ -12,6 +12,7 @@ contract TokeneX is ERC721Token("SkilleX", "SKLX") {
     mapping(uint => string) internal tokenIdToName;
     mapping(uint => string) internal tokenIdToIpfsHash;
     mapping(uint => uint) internal tokenIdToGeneration;
+    mapping(string => uint[]) internal ipfsHashToTokenIds;
 
     constructor(ERC721ComposableRegistry cr) public {
         composableRegistry = cr;
@@ -24,6 +25,7 @@ contract TokeneX is ERC721Token("SkilleX", "SKLX") {
         ipfsHashExists[ipfsHash] = true;
         tokenIdToName[tokenId] = name;
         tokenIdToIpfsHash[tokenId] = ipfsHash;
+        ipfsHashToTokenIds[ipfsHash].push(tokenId);
         composableRegistry.onERC721Received(this, tokenId, addressAndUintToBytes(toErc721, toTokenId));
     }
 
@@ -33,6 +35,7 @@ contract TokeneX is ERC721Token("SkilleX", "SKLX") {
         tokenIdToName[tokenId] = tokenIdToName[originalId];
         tokenIdToIpfsHash[tokenId] = tokenIdToIpfsHash[originalId];
         tokenIdToGeneration[tokenId] = tokenIdToGeneration[originalId] + 1;
+        ipfsHashToTokenIds[tokenIdToIpfsHash[tokenId]].push(tokenId);
         composableRegistry.onERC721Received(this, tokenId, addressAndUintToBytes(toErc721, toTokenId));
     }
 
@@ -60,6 +63,11 @@ contract TokeneX is ERC721Token("SkilleX", "SKLX") {
     modifier canTransfer(uint256 _tokenId) {
         require(false);
         _;
+    }
+
+    function getSkillOwners(string ipfsHash) public view returns (uint[]) {
+        require(ipfsHashExists[ipfsHash]);
+        return ipfsHashToTokenIds[ipfsHash];
     }
 }
 
