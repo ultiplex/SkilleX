@@ -482,7 +482,7 @@
         "id": 796,
         "nodeType": "ImportDirective",
         "scope": 828,
-        "sourceUnit": 2855,
+        "sourceUnit": 2895,
         "src": "26:65:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -496,10 +496,10 @@
               "id": 797,
               "name": "ERC721Token",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2854,
+              "referencedDeclaration": 2894,
               "src": "114:11:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ERC721Token_$2854",
+                "typeIdentifier": "t_contract$_ERC721Token_$2894",
                 "typeString": "contract ERC721Token"
               }
             },
@@ -509,13 +509,13 @@
           }
         ],
         "contractDependencies": [
-          1743,
-          1763,
-          1770,
-          1877,
-          2460,
-          2854,
-          2950
+          1783,
+          1803,
+          1810,
+          1917,
+          2500,
+          2894,
+          2990
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -523,13 +523,13 @@
         "id": 827,
         "linearizedBaseContracts": [
           827,
-          2854,
-          2460,
-          1770,
-          1763,
-          1743,
-          1877,
-          2950
+          2894,
+          2500,
+          1810,
+          1803,
+          1783,
+          1917,
+          2990
         ],
         "name": "KittyNFT",
         "nodeType": "ContractDefinition",
@@ -598,10 +598,10 @@
                         "name": "ERC721Token",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2854,
+                        "referencedDeclaration": 2894,
                         "src": "164:11:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_ERC721Token_$2854_$",
+                          "typeIdentifier": "t_type$_t_contract$_ERC721Token_$2894_$",
                           "typeString": "type(contract ERC721Token)"
                         }
                       },
@@ -612,7 +612,7 @@
                       "lValueRequested": false,
                       "memberName": "initialize",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2532,
+                      "referencedDeclaration": 2572,
                       "src": "164:22:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_string_memory_ptr_$_t_string_memory_ptr_$returns$__$",
@@ -724,7 +724,7 @@
                         "name": "allTokens",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2504,
+                        "referencedDeclaration": 2544,
                         "src": "270:9:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_uint256_$dyn_storage",
@@ -786,7 +786,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2965,
+                          "referencedDeclaration": 3005,
                           "src": "306:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -836,9 +836,9 @@
                       "name": "_mint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        2774
+                        2814
                       ],
-                      "referencedDeclaration": 2774,
+                      "referencedDeclaration": 2814,
                       "src": "300:5:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -926,7 +926,7 @@
         "id": 796,
         "nodeType": "ImportDirective",
         "scope": 828,
-        "sourceUnit": 2855,
+        "sourceUnit": 2895,
         "src": "26:65:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -940,10 +940,10 @@
               "id": 797,
               "name": "ERC721Token",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2854,
+              "referencedDeclaration": 2894,
               "src": "114:11:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ERC721Token_$2854",
+                "typeIdentifier": "t_contract$_ERC721Token_$2894",
                 "typeString": "contract ERC721Token"
               }
             },
@@ -953,13 +953,13 @@
           }
         ],
         "contractDependencies": [
-          1743,
-          1763,
-          1770,
-          1877,
-          2460,
-          2854,
-          2950
+          1783,
+          1803,
+          1810,
+          1917,
+          2500,
+          2894,
+          2990
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -967,13 +967,13 @@
         "id": 827,
         "linearizedBaseContracts": [
           827,
-          2854,
-          2460,
-          1770,
-          1763,
-          1743,
-          1877,
-          2950
+          2894,
+          2500,
+          1810,
+          1803,
+          1783,
+          1917,
+          2990
         ],
         "name": "KittyNFT",
         "nodeType": "ContractDefinition",
@@ -1042,10 +1042,10 @@
                         "name": "ERC721Token",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2854,
+                        "referencedDeclaration": 2894,
                         "src": "164:11:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_ERC721Token_$2854_$",
+                          "typeIdentifier": "t_type$_t_contract$_ERC721Token_$2894_$",
                           "typeString": "type(contract ERC721Token)"
                         }
                       },
@@ -1056,7 +1056,7 @@
                       "lValueRequested": false,
                       "memberName": "initialize",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2532,
+                      "referencedDeclaration": 2572,
                       "src": "164:22:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_string_memory_ptr_$_t_string_memory_ptr_$returns$__$",
@@ -1168,7 +1168,7 @@
                         "name": "allTokens",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2504,
+                        "referencedDeclaration": 2544,
                         "src": "270:9:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_uint256_$dyn_storage",
@@ -1230,7 +1230,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2965,
+                          "referencedDeclaration": 3005,
                           "src": "306:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1280,9 +1280,9 @@
                       "name": "_mint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        2774
+                        2814
                       ],
-                      "referencedDeclaration": 2774,
+                      "referencedDeclaration": 2814,
                       "src": "300:5:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -1362,5 +1362,5 @@
     }
   },
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-26T23:32:02.267Z"
+  "updatedAt": "2018-05-27T10:30:34.783Z"
 }

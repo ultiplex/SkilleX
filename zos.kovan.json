@@ -1,27 +1,27 @@
 {
   "contracts": {
     "SkilleX": {
-      "address": "0x436d96a711cfeb1ff9fa99fb1fc1c24d2a381df9",
-      "bytecodeHash": "44ec39f7661040403ac28041f11f261ac5a1ed42e8db590414afcfa309bc725b"
+      "address": "0xfaecc71aaec1b16aea436cdb72764fbe8db42eec",
+      "bytecodeHash": "ec0c097676d7d186bc9c521a34c21cd43a293e7c3c6cf4f1ef3b409a5da07b67"
     }
   },
   "proxies": {
     "SkilleX": [
       {
-        "address": "0x1113a62e4001ebdbd8fc265643516a2adf92d933",
+        "address": "0x5a582c7b7a4c4932da88c9a96d4e7c1cc63be7e1",
         "version": "0.1.0",
-        "implementation": "0x436d96a711cfeb1ff9fa99fb1fc1c24d2a381df9"
+        "implementation": "0xfaecc71aaec1b16aea436cdb72764fbe8db42eec"
       }
     ]
   },
   "app": {
-    "address": "0x11138e5ae41cc3130826dde2508cba5a916c16d1"
+    "address": "0x02881c295e166fc629e2e5e5f14478b58eccb2d6"
   },
   "version": "0.1.0",
   "package": {
-    "address": "0x20c7f11d60d9a07dc01516373cbf90147830d88f"
+    "address": "0x48dc26c59f011a1ae543cf2d55a870d33523c783"
   },
   "provider": {
-    "address": "0x609fd93032ad638a50fe3d509cb302b569f7f051"
+    "address": "0xb76de25eff8491700b0c8b0a774f4eacf8f34656"
   }
 }
