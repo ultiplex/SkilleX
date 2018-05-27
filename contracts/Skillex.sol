@@ -6,7 +6,7 @@ import "./ERC721ComposableRegistry.sol";
 
 contract TokeneX is ERC721Token("SkilleX", "SKLX") {
 
-    ERC721ComposableRegistry internal composableRegistry;
+    ERC721ComposableRegistry public composableRegistry;
 
     mapping(string => bool) private ipfsHashExists;
     mapping(uint => string) internal tokenIdToName;
